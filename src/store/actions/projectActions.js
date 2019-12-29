@@ -1,9 +1,17 @@
-//actions to delete or update projects
-export const createProject = (project) =>{
-    return (dispatch,getState)=>{ //first call is pausing dispatch
-        //make asyno call to database
-        dispatch({ type: 'CREATE_PROJECT', project: project }) //done action then carrying on dispatch
-    
+export const createProject = (project) => {
+    return (dispatch, getState, {getFirebase,getFirestore}) => {
+      // make async call to database
+      const firestore = getFirestore();
+      firestore.collection('projects').add({
+        ...project,
+        authorFirstName: 'Net',
+        authorLastName: 'Ninja',
+        authorId: 12345,
+        createdAt: new Date()
+      }).then(() => {
+        dispatch({ type: 'CREATE_PROJECT_SUCCESS' });
+      }).catch(err => {
+        dispatch({ type: 'CREATE_PROJECT_ERROR' }, err);
+      });
     }
-};
-
+  };
