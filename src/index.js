@@ -5,25 +5,22 @@
 // import * as serviceWorker from './serviceWorker';
 // import { createStore, applyMiddleware, compose } from 'redux'
 // import rootReducer from './store/reducers/rootReducer'
-// import { Provider } from 'react-redux'
+// import { Provider } from 'react-redux'//binding layer
 // import thunk from 'redux-thunk'
-// import {reduxFirestore, getFirestore} from 'redux-firestore'
-// import {reactReduxFirebase, getFirebase} from 'react-redux-firebase'
+// import {reduxFirestore, getFirestore} from 'redux-firestore';
+// import {reactReduxFirebase, getFirebase} from 'react-redux-firebase';
 // import fbConfig from './config/fbConfig'
 
 // const store = createStore(rootReducer, 
 //     compose(//return store enhancer
 //         applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
-//         reduxFirestore(fbConfig),
-//         reactReduxFirebase(fbConfig),
+//         reactReduxFirebase(fbConfig),//store enhancers
+//         reduxFirestore(fbConfig),//store enhancers
 //     )
-//         );//take a list of middleware and enhance store functionality
+// );//take a list of middleware and enhance store functionality
 
 // ReactDOM.render(<Provider store= {store}> <App /> </Provider>, document.getElementById('root'));
 
-// // If you want your app to work offline and load faster, you can change
-// // unregister() to register() below. Note this comes with some pitfalls.
-// // Learn more about service workers: https://bit.ly/CRA-PWA
 // serviceWorker.unregister();
 
 import React from 'react';
@@ -48,4 +45,7 @@ const store = createStore(rootReducer,
 );
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+
 serviceWorker.unregister();
+
+
