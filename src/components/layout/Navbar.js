@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import SignOutLinks from './SignOutLinks';
-import SignInLinks from './SignInLinks';
+import SignOutLinks from './SignedOutLinks';
+import SignInLinks from './SignedInLinks';
 import { connect } from 'react-redux'
 
 
