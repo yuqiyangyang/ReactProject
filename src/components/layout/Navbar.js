@@ -1,17 +1,20 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import SignOutLinks from './SignedOutLinks';
-import SignInLinks from './SignedInLinks';
+import SignedOutLinks from './SignedOutLinks';
+import SignedInLinks from './SignedInLinks';
 import { connect } from 'react-redux'
 
 
-        const Navbar = () =>{
+        const Navbar = (props) =>{
+            //destructure to get auth property
+            const {auth}= props;
+            const links = auth.uid? <SignedInLinks /> : <SignedOutLinks />
+
             return(
             <nav className="nav-wrapper grey darken-3">
                 <div className="container">
                 <Link to='/' className="brand-logo">Mario Plan</Link>
-                <SignInLinks/>
-                <SignOutLinks/>
+                {links}
             </div>
             </nav>
             )
@@ -19,7 +22,7 @@ import { connect } from 'react-redux'
 
         const mapStateToProps = (state) =>{
             return{
-
+                auth: state.firebase.auth
             }
         }
 
